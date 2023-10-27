@@ -6,6 +6,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BandRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BandRepository::class)]
 #[ApiResource]
@@ -17,21 +18,29 @@ class Band
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(min: 1, max: 255)]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255)]
+    #[Assert\NotBlank]
     private ?string $origin = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255)]
+    #[Assert\NotBlank]
     private ?string $city = null;
 
     #[ORM\Column]
+    #[Assert\NotNull]
     private ?int $startYear = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $endYear = null;
 
     #[ORM\Column(length: 512, nullable: true)]
+    #[Assert\Length(max: 512)]
     private ?string $foundingMembers = null;
 
     #[ORM\Column(nullable: true)]
@@ -41,6 +50,7 @@ class Band
     private ?string $trend = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotNull]
     private ?string $summary = null;
 
     public function getId(): ?int
@@ -53,7 +63,7 @@ class Band
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
@@ -65,7 +75,7 @@ class Band
         return $this->origin;
     }
 
-    public function setOrigin(string $origin): static
+    public function setOrigin(?string $origin): static
     {
         $this->origin = $origin;
 
@@ -77,7 +87,7 @@ class Band
         return $this->city;
     }
 
-    public function setCity(string $city): static
+    public function setCity(?string $city): static
     {
         $this->city = $city;
 
@@ -89,7 +99,7 @@ class Band
         return $this->startYear;
     }
 
-    public function setStartYear(int $startYear): static
+    public function setStartYear(?int $startYear): static
     {
         $this->startYear = $startYear;
 
@@ -149,7 +159,7 @@ class Band
         return $this->summary;
     }
 
-    public function setSummary(string $summary): static
+    public function setSummary(?string $summary): static
     {
         $this->summary = $summary;
 

@@ -22,6 +22,7 @@ final class CreateImportAction extends AbstractController
         if (!$importer->support($uploadedFile)) {
             throw new BadRequestHttpException('Unsupported File Type');
         }
+        // TODO : move file to proper directory within the Filesystem instead of the public folder
 
         $import = new Import();
         $import->file = $uploadedFile;

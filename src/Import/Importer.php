@@ -40,8 +40,10 @@ class Importer implements ImporterInterface
                 return;
             }
         }
+
+        // Arriving here means bad coding...
         throw new LogicException(
-            'No importer exists for this file. A call to the support method must be done first'
+            'No importer exists for this file. A check call to the support method must be done first'
         );
     }
 }
