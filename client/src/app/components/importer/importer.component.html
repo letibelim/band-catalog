@@ -1,0 +1,26 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Import
+    </mat-panel-title>
+    <mat-panel-description>
+      Pour importer vos groupes favoris
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="center">
+    <div>
+      <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+      <button mat-flat-button color="primary" class="upload-btn" (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+        {{ file?.name || defaultMessage }}
+      </button>
+    </div>
+    <div *ngIf="file">
+      <button mat-flat-button color="accent" (click)="sendFile()">
+        <mat-icon>forward</mat-icon> Envoyer !
+      </button>
+    </div>
+  </div>
+  <p style="text-align: center" *ngIf="feedback">{{ feedback }}</p>
+</mat-expansion-panel>

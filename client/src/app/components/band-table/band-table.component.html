@@ -1,0 +1,69 @@
+<table mat-table [dataSource]="bandsDataSource" class="mat-elevation-z8" aria-describedby="band table">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nom</th>
+    <td mat-cell *matCellDef="let band"> {{band.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="origin">
+    <th mat-header-cell *matHeaderCellDef>Origine</th>
+    <td mat-cell *matCellDef="let band"> {{band.origin}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef>Ville</th>
+    <td mat-cell *matCellDef="let band"> {{band.city}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="startYear">
+    <th mat-header-cell *matHeaderCellDef>Début</th>
+    <td mat-cell *matCellDef="let band"> {{band.startYear}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="endYear">
+    <th mat-header-cell *matHeaderCellDef>Séparation</th>
+    <td mat-cell *matCellDef="let band"> {{band.endYear}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="foundingMembers">
+    <th mat-header-cell *matHeaderCellDef>Fondateurs</th>
+    <td mat-cell *matCellDef="let band"> {{band.foundingMembers}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="membersCount">
+    <th mat-header-cell *matHeaderCellDef>Membres</th>
+    <td mat-cell *matCellDef="let band"> {{band.membersCount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="trend">
+    <th mat-header-cell *matHeaderCellDef>Courant musical</th>
+    <td mat-cell *matCellDef="let band"> {{band.trend}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let band"> {{band.summary | truncate: [150] }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action-delete">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let band">
+      <button mat-mini-fab color="accent" matTooltip="Supprimer" (click)="openDeleteDialog(band)"><mat-icon>close</mat-icon></button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action-edit">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let band">
+      <button mat-mini-fab color="primary" matTooltip="Editer" (click)="openEditDialog(band)"><mat-icon>create</mat-icon></button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</table>

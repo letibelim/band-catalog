@@ -1,0 +1,73 @@
+<h2 mat-dialog-title>Créer/editer ce groupe</h2>
+<mat-dialog-content>
+  <form [formGroup]="bandForm">
+    <div>
+      <div class="flex-space-around">
+        <mat-form-field>
+          <label>Nom</label>
+          <input matInput placeholder="Nom" required formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Origine</label>
+          <input matInput placeholder="Origine" required formControlName="origin">
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Ville</label>
+          <input matInput placeholder="Ville" required formControlName="city">
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Début</label>
+          <input matInput type="number" step="1" placeholder="Début" required formControlName="startYear">
+        </mat-form-field>
+      </div>
+      <div class="flex-space-around">
+        <mat-form-field>
+          <label>Séparation</label>
+          <input matInput type="number" step="1" placeholder="Séparation" required formControlName="endYear">
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Fondateurs</label>
+          <input matInput placeholder="Fondateurs" required formControlName="foundingMembers">
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Membres</label>
+          <input matInput placeholder="Membres" required formControlName="membersCount">
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>Courant musical</label>
+          <input matInput placeholder="Courant musical" required formControlName="trend">
+        </mat-form-field>
+      </div>
+      <div  class="flex-space-around">
+        <mat-form-field style="flex-grow: 3">
+          <label>Description</label>
+          <textarea
+            matInput
+            placeholder="Description"
+            required
+            formControlName="summary"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="display: flex; justify-content: center">
+  <button mat-raised-button color="warn" mat-dialog-close>
+    Annuler
+  </button>
+  <button mat-raised-button color="primary" (click)="saveBand()">
+    <mat-icon>save</mat-icon>
+    Enregistrer
+  </button>
+</mat-dialog-actions>
