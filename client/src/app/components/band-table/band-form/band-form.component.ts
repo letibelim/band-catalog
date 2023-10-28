@@ -41,7 +41,6 @@ export class BandFormComponent implements OnInit {
 
   saveBand() {
     if (this.bandForm.valid) {
-      console.log('is valid');
       const updatedBand: Band = {...this.band, ...this.bandForm.value};
       this.bandService.patchBand(updatedBand)
       this.dialogRef.close()

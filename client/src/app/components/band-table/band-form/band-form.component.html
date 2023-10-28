@@ -1,6 +1,7 @@
+<form [formGroup]="bandForm" (ngSubmit)="saveBand()">
+
 <h2 mat-dialog-title>Créer/editer ce groupe</h2>
 <mat-dialog-content>
-  <form [formGroup]="bandForm">
     <div>
       <div class="flex-space-around">
         <mat-form-field>
@@ -60,14 +61,14 @@
         </mat-form-field>
       </div>
     </div>
-  </form>
 </mat-dialog-content>
 <mat-dialog-actions style="display: flex; justify-content: center">
   <button mat-raised-button color="warn" mat-dialog-close>
     Annuler
   </button>
-  <button mat-raised-button color="primary" (click)="saveBand()">
+  <button mat-raised-button color="primary" type="submit">
     <mat-icon>save</mat-icon>
     Enregistrer
   </button>
 </mat-dialog-actions>
+</form>

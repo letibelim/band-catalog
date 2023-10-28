@@ -40,6 +40,6 @@ export class BandTableComponent implements OnInit {
   }
 
   openDeleteDialog(band: Band) {
-    console.log('delete band');
+    this.bandService.deleteBand(band);
   }
 }

@@ -45,11 +45,18 @@ export class BandService {
   patchBand(band: Band) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/merge-patch+json');
-    console.log(headers);
     this.http.patch(`${this.bandsUrl}/${band.id}`, band, {headers: headers}).pipe(
       catchError(this.handleError),
     ).subscribe({
-      next: (band) => this.getAllBands()
+      next: () => this.getAllBands()
+    })
+  }
+
+  deleteBand(band: Band) {
+    this.http.delete(`${this.bandsUrl}/${band.id}`).pipe(
+      catchError(this.handleError),
+    ).subscribe({
+      next: () => this.getAllBands()
     })
   }
 
