@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {BandConnectorService} from "../../services/band-connector.service";
+import {BandService} from "../../services/band.service";
 import {Band} from "../../../interfaces/band";
 import {Observable} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
@@ -21,14 +21,14 @@ export class BandTableComponent implements OnInit {
   public selectedBand?: Band;
 
   constructor(
-    private bandConnector: BandConnectorService,
+    private bandService: BandService,
     public dialog: MatDialog
   ) {
-    this.bandsDataSource = bandConnector.bands
+    this.bandsDataSource = bandService.bands
   }
 
   ngOnInit(): void {
-    this.bandConnector.getAllBands();
+    this.bandService.getAllBands();
   }
 
   openEditDialog(band: Band) {

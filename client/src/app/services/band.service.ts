@@ -7,7 +7,7 @@ import {Band} from "../../interfaces/band";
 @Injectable({
   providedIn: 'root'
 })
-export class BandConnectorService {
+export class BandService {
 
   private bandsUrl = environment.apiUrl + '/bands'
   private _importUrl = environment.apiUrl + '/imports'

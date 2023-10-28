@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {BandConnectorService} from "../../services/band-connector.service";
+import {BandService} from "../../services/band.service";
 
 @Component({
   selector: 'app-importer',
@@ -12,7 +12,7 @@ export class ImporterComponent {
   file: File | null = null;
   feedback: string | null = null;
 
-  constructor(private bandConnector: BandConnectorService) {
+  constructor(private bandService: BandService) {
   }
 
   onFileSelected(event: Event): void {
@@ -35,7 +35,7 @@ export class ImporterComponent {
       this.setFeedBack('Pas de fichier sélectionné');
       return;
     }
-    this.bandConnector.sendXlsxFile(this.file).subscribe({
+    this.bandService.sendXlsxFile(this.file).subscribe({
         next: () => this.setFeedBack('Le fichier a été envoyé avec succès !'),
       }
     )

@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Band} from "../../../../interfaces/band";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {BandConnectorService} from "../../../services/band-connector.service";
+import {BandService} from "../../../services/band.service";
 
 @Component({
   selector: 'app-band-form',
@@ -13,7 +13,7 @@ export class BandFormComponent implements OnInit {
   bandForm!: FormGroup
 
   constructor(
-    private bandConnector: BandConnectorService,
+    private bandService: BandService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<BandFormComponent>,
     @Inject(MAT_DIALOG_DATA) public band: Band,
@@ -43,7 +43,7 @@ export class BandFormComponent implements OnInit {
     if (this.bandForm.valid) {
       console.log('is valid');
       const updatedBand: Band = {...this.band, ...this.bandForm.value};
-      this.bandConnector.patchBand(updatedBand)
+      this.bandService.patchBand(updatedBand)
       this.dialogRef.close()
     }
   }
