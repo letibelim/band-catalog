@@ -17,6 +17,7 @@ DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:5432/app?serverVersion=15
 CORS_ALLOW_ORIGIN='^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$'
 
 ```
+3. Install dependencies with `composer install` or `symfony composer install`
 3. Run `docker compose build --no-cache` to build fresh images
 4. Run `docker compose up --pull -d --wait` to start the project
 5. Open `https://localhost/api` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
